@@ -82,7 +82,7 @@ public class SubscriptionController {
 		}
 	}
 
-	@DeleteMapping("/")
+	@DeleteMapping("/{id}")
 	public ResponseEntity delete(@PathVariable Long id) {
 		try {
 			subscriptionService.delete(id);
