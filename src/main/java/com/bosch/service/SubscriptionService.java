@@ -14,7 +14,7 @@ public interface SubscriptionService {
 	
 	public Optional<Subscription> create(final SubscriptionDTO subscriptionDTO);
 	
-	public Optional<Subscription> update(final SubscriptionDTO subscriptionDTO);
+	public Optional<Subscription> update(final Subscription subscription);
 	
 	public void delete(Long id);
 

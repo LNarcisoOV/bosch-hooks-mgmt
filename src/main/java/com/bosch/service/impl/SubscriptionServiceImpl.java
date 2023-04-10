@@ -34,15 +34,14 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 	@Override
 	public Optional<Subscription> create(final SubscriptionDTO subscriptionDTO) {
 		final Subscription subscription = modelMapper.map(subscriptionDTO, Subscription.class);
-		final Subscription subscriptionDB = subscriptionDao.save(subscription);
-		return Optional.of(subscriptionDB);
+		return save(subscription);
 	}
 	
 	@Override
-	public Optional<Subscription> update(final SubscriptionDTO subscriptionDTO) {
-		final Optional<Subscription> subscriptionOpt = getById(subscriptionDTO.getId());
+	public Optional<Subscription> update(final Subscription subscription) {
+		final Optional<Subscription> subscriptionOpt = getById(subscription.getId());
 		if(subscriptionOpt.isPresent()) {
-			return create(subscriptionDTO);
+			return save(subscription);
 		}
 		return Optional.empty();
 	}
@@ -53,5 +52,10 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 		if(subscriptionOpt.isPresent()) {
 			subscriptionDao.delete(subscriptionOpt.get());
 		}
+	}
+	
+	private Optional<Subscription> save(final Subscription subscription) {
+		final Subscription subscriptionDB = subscriptionDao.save(subscription);
+		return Optional.of(subscriptionDB);
 	}
 }

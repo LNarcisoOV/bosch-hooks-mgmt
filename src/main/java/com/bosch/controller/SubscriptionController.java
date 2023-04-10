@@ -67,9 +67,9 @@ public class SubscriptionController {
 	}
 
 	@PutMapping("/")
-	public ResponseEntity<SubscriptionDTO> update(@RequestBody SubscriptionDTO subscriptionDTO) {
+	public ResponseEntity<SubscriptionDTO> update(@RequestBody Subscription subscription) {
 		try {
-			Optional<Subscription> subscriptionOpt = subscriptionService.update(subscriptionDTO);
+			Optional<Subscription> subscriptionOpt = subscriptionService.update(subscription);
 			if (subscriptionOpt.isPresent()) {
 				final SubscriptionDTO subscriptionDBDTO = modelMapper.map(subscriptionOpt.get(), SubscriptionDTO.class);
 				return new ResponseEntity<SubscriptionDTO>(subscriptionDBDTO, HttpStatus.NO_CONTENT);
