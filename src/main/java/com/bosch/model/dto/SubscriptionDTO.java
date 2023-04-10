@@ -4,8 +4,17 @@ import java.util.Objects;
 
 public class SubscriptionDTO {
 	
-	
 	private boolean active;
+	
+	private String description;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public boolean isActive() {
 		return active;
@@ -17,7 +26,7 @@ public class SubscriptionDTO {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(active);
+		return Objects.hash(active, description);
 	}
 
 	@Override
@@ -29,11 +38,11 @@ public class SubscriptionDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		SubscriptionDTO other = (SubscriptionDTO) obj;
-		return active == other.active;
+		return active == other.active && Objects.equals(description, other.description);
 	}
 
 	@Override
 	public String toString() {
-		return "Subscription [active=" + active + "]";
+		return "SubscriptionDTO [active=" + active + ", description=" + description + "]";
 	}
 }
