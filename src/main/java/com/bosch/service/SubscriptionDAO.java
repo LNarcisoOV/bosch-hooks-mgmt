@@ -1,9 +1,9 @@
 package com.bosch.service;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.bosch.model.Subscription;
 
-public interface SubscriptionDAO extends CrudRepository<Subscription, Long>{
+public interface SubscriptionDAO extends JpaRepository<Subscription, Long>{
 
 }
