@@ -17,17 +17,14 @@ public class SwaggerConfig {
 
 	@Bean
 	public Docket swaggerConfig() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.apis(RequestHandlerSelectors.basePackage(("com.bosch")))
-	            .paths(PathSelectors.ant("/subscriptions/**"))
-				.build()
-				.apiInfo(apiInfo());
+		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage(("com.bosch")))
+				.paths(PathSelectors.ant("/subscriptions/**")).build().apiInfo(apiInfo());
 	}
-	
-	  private ApiInfo apiInfo() {
-	        return new ApiInfo("Bosch REST Hooks", "Bosch evaluation for backend developer.", "BOSCH API", "Terms of service",
-	                new Contact("Leonardo Narciso", "https://www.linkedin.com/in/leonardo-narciso/", 
-	                		"LNarcisoOV@gmail.com"), "License of API", "API license URL");
-	    }
+
+	private ApiInfo apiInfo() {
+		return new ApiInfo("Bosch REST Hooks", "Bosch evaluation for backend developer.", "BOSCH API",
+				"Terms of service", new Contact("Leonardo Narciso", "https://www.linkedin.com/in/leonardo-narciso/",
+						"LNarcisoOV@gmail.com"),
+				"License of API", "API license URL");
+	}
 }
